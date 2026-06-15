@@ -42,7 +42,6 @@ def rename_files_by_date(folder_path, extension):
         except Exception as e:
             print(f"Error processing {filename}: {e}")
 
-
 if __name__ == "__main__":
     folder_path = input("Enter folder path: ").strip()
     extension = input("Enter file extension (e.g. .png): ").strip()
