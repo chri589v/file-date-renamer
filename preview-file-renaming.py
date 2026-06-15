@@ -1,9 +1,10 @@
 import os
 from datetime import datetime
 
-def rename_files_by_date(folder_path, extension):
+def preview_renaming(folder_path, extension):
     """
-    Rename files with a specific extension based on their modification date.
+    Preview how files would be renamed based on modification date.
+    No changes are made.
     """
 
     extension = extension.lower()
@@ -12,7 +13,6 @@ def rename_files_by_date(folder_path, extension):
         if not filename.lower().endswith(extension):
             continue
 
-        # Skip files that already start with a date
         if (
             len(filename) >= 10
             and filename[:10].count("-") == 2
@@ -28,16 +28,8 @@ def rename_files_by_date(folder_path, extension):
 
             date_str = modification_date.strftime("%Y-%m-%d")
             new_filename = f"{date_str}{extension}"
-            new_filepath = os.path.join(folder_path, new_filename)
 
-            counter = 1
-            while os.path.exists(new_filepath):
-                new_filename = f"{date_str}_{counter}{extension}"
-                new_filepath = os.path.join(folder_path, new_filename)
-                counter += 1
-
-            os.rename(filepath, new_filepath)
-            print(f"Renamed: {filename} → {new_filename}")
+            print(f"{filename} → {new_filename}")
 
         except Exception as e:
             print(f"Error processing {filename}: {e}")
@@ -53,4 +45,4 @@ if __name__ == "__main__":
     if not os.path.isdir(folder_path):
         print("Invalid folder path.")
     else:
-        rename_files_by_date(folder_path, extension)
+        preview_renaming(folder_path, extension)
