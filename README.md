@@ -12,12 +12,12 @@ A simple Python tool for renaming files based on their last modification date.
 
 ### Rename files (applies changes)
 ```bash
-python date-based-filename-renamer.py
+file-date-renamer.py
 ```
 
 ### Preview renaming (no changes)
 ```bash
-python preview-file-renaming.py
+preview-file-date-renamer.py
 ```
 
 ## Example
